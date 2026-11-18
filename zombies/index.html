@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breach Night</title>
+<link rel="stylesheet" href="../lib/page.css">
+<script type="importmap">{ "imports": { "three": "../lib/three.module.js" } }</script>
+</head>
+<body>
+<div id="overlay" class="overlay">
+  <div class="card danger">
+    <a class="back" href="../">← All apps</a>
+    <h1>Breach Night</h1>
+    <p class="lead">Mixed-reality home defence. Boarded doorways open in your real walls and the dead come through them. Every weapon is available from the first second.</p>
+    <div class="opts">
+      <label>Difficulty<select id="opt-diff"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="insane">Insane</option></select></label>
+      <label>Laser sights<select id="opt-laser"><option value="on" selected>On</option><option value="off">Off</option></select></label>
+      <label>Hide zombies behind furniture (experimental)<select id="opt-depth"><option value="off" selected>Off</option><option value="on">On</option></select></label>
+    </div>
+    <div class="row">
+      <button id="enter-ar" class="primary" disabled>Enter mixed reality</button>
+      <button id="enter-vr" disabled>Enter VR (no passthrough)</button>
+      <button id="enter-desktop">Desktop preview</button>
+    </div>
+    <p id="status" class="status">Checking for a headset…</p>
+    <ul class="how">
+      <li><b>Room:</b> the game uses your headset's room scan to find your walls. If you have never scanned this room, the headset will offer to do it.</li>
+      <li><b>Shoot:</b> trigger. Each hand carries its own weapon. <b>Switch:</b> flick the thumbstick left or right. <b>Reload:</b> A / B / X / Y, or just run the magazine dry.</li>
+      <li><b>Barricades:</b> zombies have to smash the planks first. Hold the grip button next to a doorway to hammer planks back on.</li>
+      <li><b>Headshots</b> do 2.5× damage. Kill chains multiply your score. Health comes back if you stay untouched for a few seconds.</li>
+      <li><b>Desktop preview:</b> mouse to aim, click to fire, wheel or 1–0 to switch, R reload, F repair.</li>
+      <li>Clear the floor around you and keep the headset's boundary on — you will be turning and swinging.</li>
+    </ul>
+    <div class="tablewrap"><table class="w" id="weapons"></table></div>
+  </div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

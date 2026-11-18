@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf Range Tools</title>
+<link rel="stylesheet" href="../lib/page.css">
+<script type="importmap">{ "imports": { "three": "../lib/three.module.js" } }</script>
+</head>
+<body>
+<div id="overlay" class="overlay">
+  <div class="card">
+    <a class="back" href="../">← All apps</a>
+    <h1>Golf Range Tools</h1>
+    <p class="lead">A swing tempo trainer and a putting-line practice green. Hold one controller like a club grip, pointing down at the ball.</p>
+    <div class="row">
+      <button id="enter-ar" class="primary" disabled>Enter — Passthrough (your room)</button>
+      <button id="enter-vr" disabled>Enter — VR driving range</button>
+    </div>
+    <p id="status" class="status">Checking for a headset…</p>
+    <ul class="how">
+      <li><b>Start:</b> face an open bit of floor. The ball appears just in front of you and the target is to your left (right for left-handers).</li>
+      <li><b>Menu:</b> point either controller at the floating panel and pull the trigger.</li>
+      <li><b>Fit the club:</b> set up to the ball and press <b>A</b> / <b>X</b> — the club length snaps to your floor.</li>
+      <li><b>Tempo:</b> hold still behind the ball until the green ring appears, then swing. You get backswing : downswing ratio (3 : 1 is the goal), frames, club speed and an estimated carry.</li>
+      <li><b>Putting:</b> choose distance, break, slope and green speed. The white line is the ideal roll, the blue line is your start line. Every putt is scored on start line and pace.</li>
+      <li>Swing a controller only — never a real club — and check you have room.</li>
+    </ul>
+  </div>
+</div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

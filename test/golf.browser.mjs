@@ -1,0 +1,16 @@
+import { createRequire } from 'node:module'; const { chromium } = createRequire(process.env.NODE_GLOBAL || '/usr/lib/node_modules/')('playwright');
+const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+const pg = await b.newPage({ viewport: { width: 1280, height: 720 } });
+const errs = []; pg.on('pageerror', (e) => errs.push(String(e))); pg.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
+await pg.goto('http://localhost:8765/golf/'); await pg.waitForTimeout(1500);
+await pg.evaluate(() => document.getElementById('overlay').style.display = 'none');
+await pg.keyboard.press('Space'); await pg.waitForTimeout(2600);
+await pg.screenshot({ path: process.argv[2] + '/golf-tempo.png' });
+await pg.waitForTimeout(1500);
+const tempo = await pg.evaluate(() => ({ last: window.__golf.T.last, status: window.__golf.T.status }));
+await pg.keyboard.press('KeyM'); await pg.waitForTimeout(400);
+await pg.evaluate(() => { const g = window.__golf; g.S.breakIdx = 1; g.S.distFt = 10; g.setMode('putt'); });
+await pg.waitForTimeout(300); await pg.keyboard.press('Space'); await pg.waitForTimeout(6500);
+const putt = await pg.evaluate(() => ({ last: window.__golf.P.last, makes: window.__golf.P.makes, attempts: window.__golf.P.attempts }));
+await pg.screenshot({ path: process.argv[2] + '/golf-putt.png' });
+console.log(JSON.stringify({ tempo, putt, errs }, null, 1)); await b.close();
