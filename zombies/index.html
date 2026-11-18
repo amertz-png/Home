@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Breach Night</title>
-<link rel="stylesheet" href="../lib/page.css">
+<link rel="stylesheet" href="../lib/page.css?v=2">
 <script type="importmap">{ "imports": { "three": "../lib/three.module.js" } }</script>
 </head>
 <body>
@@ -12,10 +12,10 @@
   <div class="card danger">
     <a class="back" href="../">← All apps</a>
     <h1>Breach Night</h1>
-    <p class="lead">Mixed-reality home defence. Boarded doorways open in your real walls and the dead come through them. Every weapon is available from the first second.</p>
+    <p class="lead">Mixed-reality zombie survival in your own room. The dead come through your real doors and windows; every kill earns points to spend on the guns, perks and upgrades hanging on your walls.</p>
     <div class="opts">
       <label>Difficulty<select id="opt-diff"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="insane">Insane</option></select></label>
-      <label>Laser sights<select id="opt-laser"><option value="on" selected>On</option><option value="off">Off</option></select></label>
+      <label>Aim dot<select id="opt-dot"><option value="on" selected>On</option><option value="off">Off</option></select></label>
       <label>Hide zombies behind furniture (experimental)<select id="opt-depth"><option value="off" selected>Off</option><option value="on">On</option></select></label>
     </div>
     <div class="row">
@@ -24,17 +24,27 @@
       <button id="enter-desktop">Desktop preview</button>
     </div>
     <p id="status" class="status">Checking for a headset…</p>
+    <h2>Controls</h2>
+    <div class="tablewrap"><table class="w">
+      <tr><th>Button</th><th>What it does</th></tr>
+      <tr><td>Trigger</td><td>Fire. Select in menus.</td></tr>
+      <tr><td>A (right) / X (left)</td><td>Reload that hand's gun. Pulling the trigger on an empty gun also reloads.</td></tr>
+      <tr><td>B (right) / Y (left)</td><td>Next weapon in that hand. Flicking the thumbstick left or right does the same.</td></tr>
+      <tr><td>Grip</td><td>Buy the wall item you are pointing at. Hold it next to a barricade to hammer boards back on.</td></tr>
+      <tr><td>Thumbstick click</td><td>Pause menu (resume, tutorial, quit).</td></tr>
+      <tr><td>Swing</td><td>The machete and the Plasma Edge need a real swing, not a trigger pull.</td></tr>
+    </table></div>
     <ul class="how">
-      <li><b>Room:</b> the game uses your headset's room scan to find your walls. If you have never scanned this room, the headset will offer to do it.</li>
-      <li><b>Shoot:</b> trigger. Each hand carries its own weapon. <b>Switch:</b> flick the thumbstick left or right. <b>Reload:</b> A / B / X / Y, or just run the magazine dry.</li>
-      <li><b>Barricades:</b> zombies have to smash the planks first. Hold the grip button next to a doorway to hammer planks back on.</li>
-      <li><b>Headshots</b> do 2.5× damage. Kill chains multiply your score. Health comes back if you stay untouched for a few seconds.</li>
-      <li><b>Desktop preview:</b> mouse to aim, click to fire, wheel or 1–0 to switch, R reload, F repair.</li>
+      <li><b>Room:</b> the game reads your headset's room scan. Zombies only enter through the doors and windows marked in it; the menu inside the headset tells you what it found. If none are marked, add them in the headset's Space Setup and press Rescan Room.</li>
+      <li><b>Points:</b> +10 a hit, +60 a kill, +100 a headshot, +130 with a blade. You start with a pistol, a machete and 500 points.</li>
+      <li><b>On your walls:</b> weapon buys, the Mystery Crate (950), the Overclock bench (5,000 then 10,000) and five perks.</li>
+      <li><b>Desktop preview:</b> mouse to aim, click to fire, wheel or Q/E to switch, R reload, F buy/repair, P pause.</li>
       <li>Clear the floor around you and keep the headset's boundary on — you will be turning and swinging.</li>
     </ul>
+    <h2>Weapons</h2>
     <div class="tablewrap"><table class="w" id="weapons"></table></div>
   </div>
 </div>
-<script type="module" src="./main.js"></script>
+<script type="module" src="./main.js?v=2"></script>
 </body>
 </html>

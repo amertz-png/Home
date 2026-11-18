@@ -2,7 +2,7 @@ import { createRequire } from 'node:module'; const { chromium } = createRequire(
 const b = await chromium.launch({ args: ['--use-gl=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
 const pg = await b.newPage({ viewport: { width: 1280, height: 720 } });
 const errs = []; pg.on('pageerror', (e) => errs.push(String(e))); pg.on('console', (m) => { if (m.type() === 'error') errs.push(m.text()); });
-await pg.goto('http://localhost:8765/golf/'); await pg.waitForTimeout(1500);
+await pg.goto('http://localhost:8766/golf/'); await pg.waitForTimeout(1500);
 await pg.evaluate(() => document.getElementById('overlay').style.display = 'none');
 await pg.keyboard.press('Space'); await pg.waitForTimeout(2600);
 await pg.screenshot({ path: process.argv[2] + '/golf-tempo.png' });

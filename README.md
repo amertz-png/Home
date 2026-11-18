@@ -5,7 +5,7 @@ Two WebXR apps for the Meta Quest Browser. No build step, no dependencies to ins
 | App | Folder | What it is |
 | --- | --- | --- |
 | Golf Range Tools | `golf/` | Swing tempo trainer (3:1 guide tones, club speed, estimated carry) and a putting green that scores start line and pace |
-| Breach Night | `zombies/` | Mixed-reality zombie defence that cuts boarded doorways into your real walls. Ten weapons, all available from the start |
+| Breach Night | `zombies/` | Mixed-reality round-based zombie survival. Zombies enter through the doors and windows in your room scan; points buy 21 weapons, perks and upgrades mounted on your walls |
 
 ## Put it on the headset
 
@@ -29,11 +29,18 @@ Then open `http://localhost:8765/`. Golf shows a demo view (Space = demo swing, 
 node test/golf.test.mjs
 ```
 
-`test/*.browser.mjs`, `test/zombies.weapons.mjs` and `test/xr.emulated.mjs` drive the apps in headless Chromium (Playwright; the last one also needs the `iwer` WebXR emulator).
+```bash
+node test/room.test.mjs
+```
+
+The browser tests need a local server on port 8766 and Playwright. `test/zombies.browser.mjs` is a self-playing run, `test/zombies.economy.mjs` covers buying, perks, every weapon and game over, and `test/xr.emulated.mjs` drives a full emulated Quest session with a synthetic room scan (needs the `iwer` package; pass the folder that holds its `node_modules`).
 
 ## Layout
 
 - `lib/xrkit.js` — shared session, controller, panel and synth-audio helpers
 - `lib/three.module.js`, `lib/three.core.js` — three.js r187 (MIT, see `lib/THREE-LICENSE`)
 - `golf/physics.js` — tempo detector, ball flight and putting maths (pure, unit-tested)
-- `zombies/data.js` — weapons, enemy types and wave rules
+- `zombies/data.js` — weapons, prices, perks, enemy types and round rules
+- `zombies/room.js` — room-scan parsing: walls, real doors/windows, wall-mount slots (pure, unit-tested)
+- `zombies/gfx.js` — procedural textures, the instanced zombie rig, gun models and pooled effects
+- `zombies/main.js` — game loop, weapons, economy, in-headset menu and tutorial
